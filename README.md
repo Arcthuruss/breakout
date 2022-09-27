@@ -1,4 +1,3 @@
-# breakout
-casse-brique en python pour projet de NSI
+### breakout
 
 brick goes boom
