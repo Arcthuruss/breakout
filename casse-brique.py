@@ -7,7 +7,7 @@ largeur_fenetre = 800
 hauteur_fenetre = 600
 
 class Balle:
-    def __init__(self,x=50,y=20,dx=-3,dy=2,taille=10):
+    def __init__(self,x=50,y=20,dx=1,dy=1,taille=10):
         self.taille=taille
         self.x=x #position X
         self.y=y #position Y
@@ -21,15 +21,39 @@ class Balle:
     def tracer(self):
         tracerBalle(fenetre,self)
         
+    def bounce(self) :
+        if balle.x < 0 or balle.x > largeur_fenetre-self.taille :
+            balle.dx*=-1
+        if balle.y < 0 or balle.y > hauteur_fenetre-self.taille :
+            balle.dy*=-1
+
+class Raquette:
+    def __init__(self,x=largeur_fenetre//2,y=hauteur_fenetre-5,largeur=50,hauteur=5):
+        self.x=x
+        self.y=y
+        self.hauteur=hauteur
+        self.largeur=largeur
+    
+    def tracer(self) :
+        tracerRaquette(fenetre,self)
+    
+    def move(self,speed) :
+        self.x+=speed
+
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
 balle=Balle(largeur_fenetre//2,hauteur_fenetre//4)
+raquette=Raquette()
 while True:
     effacer(fenetre)
     balle.avancer()
     balle.tracer()
+    raquette.tracer()
     actualiserAffichage(fenetre)
     sleep(vitesse)
     for event in pygame.event.get(): #détection evenement
         if event.type==MOUSEMOTION: #evenement sur la souris
             balle.x=event.pos[0] #balle placée sur le X de la souris
             balle.y=event.pos[1] #balle placée sur le Y de la souris
+    if pygame.key.get_pressed()[pygame.K_RIGHT]: raquette.move(-5)
+    if pygame.key.get_pressed()[pygame.K_RIGHT]: raquette.move(5)
+    balle.bounce()
