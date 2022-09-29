@@ -1,7 +1,7 @@
 import pygame
 
-NOIR = (0, 0, 0)
-BLANC = (255, 255, 255)
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
 BLUE=(0,0,255)
 RED=(255,0,0)
 GREEN=(0,255,0)
@@ -16,7 +16,7 @@ def ouvrir_fenetre(largeur, hauteur):
         objet fenetre
     """
     fenetre = pygame.display.set_mode((largeur, hauteur))
-    fenetre.fill(BLANC)
+    fenetre.fill(WHITE)
     pygame.display.update()
     return fenetre
 
@@ -40,7 +40,7 @@ def tracerBrique(fenetre, brique):
     Sortie:
         rien
     """
-    pygame.draw.rect(fenetre, NOIR, (brique.x, brique.y, brique.taille, brique.taille))
+    pygame.draw.rect(fenetre, BLACK, (brique.x, brique.y, brique.taille, brique.taille))
 
 def tracerBalle(fenetre, balle):
     """
@@ -72,7 +72,7 @@ def effacer(fenetre):
     Sortie:
         rien
     """
-    fenetre.fill(BLANC)
+    fenetre.fill(WHITE)
     
 def fermer_fenetre():
     """
