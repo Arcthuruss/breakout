@@ -7,7 +7,9 @@ largeur_fenetre = 800
 hauteur_fenetre = 600
 alive = True
 pygame.font.init()
+pygame.mixer.init()
 font = pygame.font.Font("Monocraft.otf", 100)
+pygame.mixer.music.load("sounds/musics/Bury_the_light.ogg")
 
 class Balle:
     def __init__(self,x=50,y=20,dx=2,dy=2,taille=10):
@@ -16,6 +18,7 @@ class Balle:
         self.y=y #position Y
         self.dx=dx #vitesse déplacement axe X
         self.dy=dy #vitesse déplacement axe Y
+        self.texture = pygame.image.load("textures/vergil_face.jpg")
         
     def avancer(self):
         self.x=self.x+self.dx
@@ -52,8 +55,11 @@ class Raquette:
         self.y+=speed
 
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
-balle=Balle(largeur_fenetre//2,hauteur_fenetre//4)
+sleep(3)
+balle=Balle(1,1)
 raquette=Raquette()
+pygame.mixer.music.play()
+pygame.mixer.music.set_pos(115)
 while alive:
     effacer(fenetre)
     balle.avancer()
@@ -62,10 +68,11 @@ while alive:
     raquette.tracer()
     actualiserAffichage(fenetre)
     sleep(vitesse)
-    for event in pygame.event.get(): #détection evenement
-        if event.type==MOUSEMOTION: #evenement sur la souris
-            balle.x=event.pos[0] #balle placée sur le X de la souris
-            balle.y=event.pos[1] #balle placée sur le Y de la souris
+    pygame.event.get()
+    #for event in pygame.event.get(): #détection evenement
+    #    if event.type==MOUSEMOTION: #evenement sur la souris
+    #        balle.x=event.pos[0] #balle placée sur le X de la souris
+    #        balle.y=event.pos[1] #balle placée sur le Y de la souris
     if pygame.key.get_pressed()[pygame.K_RIGHT]:
         raquette.move_horizontal(5)
     if pygame.key.get_pressed()[pygame.K_LEFT]:
@@ -75,7 +82,9 @@ while alive:
     if pygame.key.get_pressed()[pygame.K_DOWN]:
         raquette.move_vertical(5)
 
-text = font.render(' RIP BOZO', False, BLACK)
-fenetre.blit(text, (0,0))
+text = font.render('RIP BOZO', False, BLACK)
+fenetre.blit(text, (69, 69))
+asset = pygame.image.load("textures/chair.jpeg")
+fenetre.blit(asset, (100, 200))
 actualiserAffichage(fenetre)
 sleep(2.5)
