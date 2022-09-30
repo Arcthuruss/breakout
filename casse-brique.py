@@ -5,6 +5,9 @@ import random
 vitesse=0.01
 largeur_fenetre = 800
 hauteur_fenetre = 600
+alive = True
+pygame.font.init()
+font = pygame.font.Font("Monocraft.otf", 100)
 
 class Balle:
     def __init__(self,x=50,y=20,dx=2,dy=2,taille=10):
@@ -27,7 +30,8 @@ class Balle:
         if balle.y < 0 :
             balle.dy*=-1
         if balle.y > hauteur_fenetre-self.taille :
-            exit()
+            global alive
+            alive = False
         if balle.y+balle.taille >= raquette.y and balle.y <= raquette.y+raquette.hauteur and balle.x >= raquette.x and balle.x <= raquette.x+raquette.largeur :
             balle.dy*=-1
 
@@ -50,7 +54,7 @@ class Raquette:
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
 balle=Balle(largeur_fenetre//2,hauteur_fenetre//4)
 raquette=Raquette()
-while True:
+while alive:
     effacer(fenetre)
     balle.avancer()
     balle.collisions(raquette)
@@ -70,3 +74,8 @@ while True:
         raquette.move_vertical(-5)
     if pygame.key.get_pressed()[pygame.K_DOWN]:
         raquette.move_vertical(5)
+
+text = font.render(' RIP BOZO', False, BLACK)
+fenetre.blit(text, (0,0))
+actualiserAffichage(fenetre)
+sleep(2.5)
