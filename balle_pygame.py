@@ -52,7 +52,8 @@ def tracerBalle(fenetre, balle):
         rien
     """
     fenetre.blit(balle.texture, (balle.x, balle.y))
-    pygame.draw.rect(fenetre, RED, (balle.x, balle.y, balle.taille, balle.taille))
+    #pygame.draw.rect(fenetre, RED, (balle.x, balle.y, balle.taille, balle.taille))
+    pygame.draw.circle(fenetre, RED, (balle.x, balle.y), balle.taille/2, 0)
     
 def actualiserAffichage(fenetre):
     """
