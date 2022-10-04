@@ -15,7 +15,7 @@ def ouvrir_fenetre(largeur, hauteur):
     Sortie:
         objet fenetre
     """
-    fenetre = pygame.display.set_mode((largeur, hauteur))
+    fenetre = pygame.display.set_mode((largeur, hauteur), pygame.FULLSCREEN)
     fenetre.fill(WHITE)
     pygame.display.update()
     return fenetre

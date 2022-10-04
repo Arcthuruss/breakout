@@ -1,15 +1,16 @@
 from balle_pygame import *
 from pygame.locals import *
+from random import choice
 from time import sleep
 import random
 vitesse=0.01
-largeur_fenetre = 800
-hauteur_fenetre = 600
+largeur_fenetre = 1920
+hauteur_fenetre = 1080
 alive = True
 pygame.font.init()
 pygame.mixer.init()
 font = pygame.font.Font("Monocraft.otf", 100)
-pygame.mixer.music.load("sounds/musics/Bury_the_light.ogg")
+pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
 
 class Balle:
     def __init__(self,x=50,y=20,dx=2,dy=2,taille=10):
@@ -55,11 +56,9 @@ class Raquette:
         self.y+=speed
 
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
-sleep(3)
 balle=Balle(1,1)
 raquette=Raquette()
 pygame.mixer.music.play()
-pygame.mixer.music.set_pos(115)
 while alive:
     effacer(fenetre)
     balle.avancer()
@@ -86,5 +85,9 @@ text = font.render('RIP BOZO', False, BLACK)
 fenetre.blit(text, (69, 69))
 asset = pygame.image.load("textures/chair.jpeg")
 fenetre.blit(asset, (100, 200))
-actualiserAffichage(fenetre)
+for i in range(23) :
+    gif = pygame.image.load(f"textures/gifs/sam_smile/frame_{i}_delay-0.1s.gif")
+    fenetre.blit(gif, (750, 50))
+    sleep(0.1)
+    actualiserAffichage(fenetre)
 sleep(2.5)
