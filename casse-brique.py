@@ -12,7 +12,7 @@ font = pygame.font.Font("Monocraft.otf", 100)
 pygame.mixer.music.load("sounds/musics/Bury_the_light.ogg")
 
 class Balle:
-    def __init__(self,x=50,y=20,dx=2,dy=2,taille=10):
+    def __init__(self,x=random.randint(25,75),random.randint(25,75),dx=2,dy=2,taille=10):
         self.taille=taille
         self.x=x #position X
         self.y=y #position Y
