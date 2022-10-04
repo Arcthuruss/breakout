@@ -2,7 +2,7 @@ from balle_pygame import *
 from pygame.locals import *
 from random import choice
 from time import sleep
-import random
+from random import * 
 vitesse=0.01
 largeur_fenetre = 1920
 hauteur_fenetre = 1080
@@ -13,7 +13,7 @@ font = pygame.font.Font("Monocraft.otf", 100)
 pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
 
 class Balle:
-    def __init__(self,x=50,y=20,dx=2,dy=2,taille=10):
+    def __init__(self,x=randint(25,75),y=randint(25,75),dx=2,dy=2,taille=10):
         self.taille=taille
         self.x=x #position X
         self.y=y #position Y
