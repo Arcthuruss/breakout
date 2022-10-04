@@ -1,12 +1,12 @@
 from balle_pygame import *
 from pygame.locals import *
-from random import choice
-from time import sleep
-from random import * 
+from random import choice, randint
+from time import sleep, monotonic 
 vitesse=0.01
+clock = pygame.time.Clock()
 largeur_fenetre = 1920
 hauteur_fenetre = 1080
-alive = True
+lives = 3
 pygame.font.init()
 pygame.mixer.init()
 font = pygame.font.Font("Monocraft.otf", 100)
@@ -20,7 +20,10 @@ class Balle:
         self.dx=dx #vitesse déplacement axe X
         self.dy=dy #vitesse déplacement axe Y
         self.texture = pygame.image.load("textures/vergil_face.jpg")
-        
+    
+    def set_pos(x,y) :
+        if x != None : balle.x=x
+        if yu != None: balle.y=y
     def avancer(self):
         self.x=self.x+self.dx
         self.y=self.y+self.dy
@@ -34,8 +37,8 @@ class Balle:
         if balle.y < 0 :
             balle.dy*=-1
         if balle.y > hauteur_fenetre-self.taille :
-            global alive
-            alive = False
+            global lives
+            lives -= 1          
         if balle.y+balle.taille >= raquette.y and balle.y <= raquette.y+raquette.hauteur and balle.x >= raquette.x and balle.x <= raquette.x+raquette.largeur :
             balle.dy*=-1
 
@@ -55,18 +58,22 @@ class Raquette:
     def move_vertical(self,speed) :
         self.y+=speed
 
+def pause() :
+    pass
+
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
 balle=Balle(1,1)
 raquette=Raquette()
 pygame.mixer.music.play()
-while alive:
+while lives :
     effacer(fenetre)
     balle.avancer()
     balle.collisions(raquette)
     balle.tracer()
     raquette.tracer()
     actualiserAffichage(fenetre)
-    sleep(vitesse)
+    #sleep(vitesse)
+    clock.tick(240)
     pygame.event.get()
     #for event in pygame.event.get(): #détection evenement
     #    if event.type==MOUSEMOTION: #evenement sur la souris
