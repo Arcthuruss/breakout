@@ -1,79 +1,29 @@
-from balle_pygame import *
+from gestion_fenetre import *
 from pygame.locals import *
+from classes import *
 from random import choice, randint
-from time import sleep, monotonic 
-vitesse=0.01
-clock = pygame.time.Clock()
-largeur_fenetre = 1920
-hauteur_fenetre = 1080
-lives = 3
-pygame.font.init()
+from time import sleep
+import menu
+
 pygame.mixer.init()
-font = pygame.font.Font("Monocraft.otf", 100)
 pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
-
-class Balle:
-    def __init__(self,x=randint(25,75),y=randint(25,75),dx=2,dy=2,taille=10):
-        self.taille=taille
-        self.x=x #position X
-        self.y=y #position Y
-        self.dx=dx #vitesse déplacement axe X
-        self.dy=dy #vitesse déplacement axe Y
-        self.texture = pygame.image.load("textures/vergil_face.jpg")
-    
-    def set_pos(x,y) :
-        if x != None : balle.x=x
-        if yu != None: balle.y=y
-    def avancer(self):
-        self.x=self.x+self.dx
-        self.y=self.y+self.dy
-    
-    def tracer(self):
-        tracerBalle(fenetre,self)
         
-    def collisions(self,raquette) :
-        if balle.x < 0 or balle.x > largeur_fenetre-self.taille :
-            balle.dx*=-1
-        if balle.y < 0 :
-            balle.dy*=-1
-        if balle.y > hauteur_fenetre-self.taille :
-            global lives
-            lives -= 1          
-        if balle.y+balle.taille >= raquette.y and balle.y <= raquette.y+raquette.hauteur and balle.x >= raquette.x and balle.x <= raquette.x+raquette.largeur :
-            balle.dy*=-1
-
-class Raquette:
-    def __init__(self,x=largeur_fenetre//2,y=hauteur_fenetre-5,largeur=50,hauteur=5):
-        self.x=x
-        self.y=y
-        self.hauteur=hauteur
-        self.largeur=largeur
-    
-    def tracer(self) :
-        tracerRaquette(fenetre,self)
-    
-    def move_horizontal(self,speed) :
-        self.x+=speed
-    
-    def move_vertical(self,speed) :
-        self.y+=speed
-
-def pause() :
-    pass
 
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
-balle=Balle(1,1)
-raquette=Raquette()
+balle=Balle()
+raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-20)
+#shut the fuck up 
 pygame.mixer.music.play()
 while lives :
     effacer(fenetre)
     balle.avancer()
-    balle.collisions(raquette)
-    balle.tracer()
-    raquette.tracer()
+    balle.collisions(raquette,(largeur_fenetre, hauteur_fenetre))
+    balle.tracer(fenetre)
+    raquette.tracer(fenetre)
     actualiserAffichage(fenetre)
+    print(f"{lives=}")
     #sleep(vitesse)
-    clock.tick(240)
+    clock.tick(60)
     pygame.event.get()
     #for event in pygame.event.get(): #détection evenement
     #    if event.type==MOUSEMOTION: #evenement sur la souris
@@ -87,6 +37,8 @@ while lives :
         raquette.move_vertical(-5)
     if pygame.key.get_pressed()[pygame.K_DOWN]:
         raquette.move_vertical(5)
+    if pygame.key.get_pressed()[pygame.K_ESCAPE]:
+        menu.pause(fenetre)
 
 text = font.render('RIP BOZO', False, BLACK)
 fenetre.blit(text, (69, 69))

@@ -1,10 +1,25 @@
 import pygame
+from random import choice
 
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 BLUE=(0,0,255)
 RED=(255,0,0)
 GREEN=(0,255,0)
+
+largeur_fenetre = 960
+hauteur_fenetre = 540
+
+lives = 3
+clock = pygame.time.Clock()
+
+pygame.font.init()
+font = pygame.font.Font("Monocraft.otf", 100)
+
+with open("splash_texts.txt",'r',encoding='utf-8') as f:
+    splash_texts=f.read().split('\n')
+caption = "Casse-Brique : " + choice(splash_texts)
+icon = pygame.image.load("textures/vergil_face.jpg")
 
 def ouvrir_fenetre(largeur, hauteur):
     """
@@ -15,7 +30,9 @@ def ouvrir_fenetre(largeur, hauteur):
     Sortie:
         objet fenetre
     """
-    fenetre = pygame.display.set_mode((largeur, hauteur), pygame.FULLSCREEN)
+    pygame.display.set_icon(icon)
+    pygame.display.set_caption(caption)
+    fenetre = pygame.display.set_mode((largeur, hauteur), pygame.SCALED)
     fenetre.fill(WHITE)
     pygame.display.update()
     return fenetre
@@ -51,11 +68,9 @@ def tracerBalle(fenetre, balle):
     Sortie:
         rien
     """
-    fenetre.blit(balle.texture, (balle.x, balle.y))
-    pygame.draw.rect(fenetre, RED, (balle.x, balle.y, balle.taille, balle.taille))
-    #pygame.draw.circle(fenetre, RED, (balle.x, balle.y), balle.taille/2, 0)
+    pygame.draw.circle(fenetre, GREEN, (balle.x+balle.taille//2, balle.y+balle.taille//2), balle.taille//2)
     
-def actualiserAffichage(fenetre):
+def actualiserAffichage(fenetre,rectangle=None):
     """
     Actualise l'affichage
     Parametre:
@@ -63,7 +78,7 @@ def actualiserAffichage(fenetre):
     Sortie:
         rien
     """
-    pygame.display.update()
+    pygame.display.update(rectangle)
     
     
 def effacer(fenetre):
