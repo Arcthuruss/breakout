@@ -8,7 +8,7 @@ def pause(fenetre) :
 	cursor = 0
 	while 1 :
 		for i,v in enumerate(options) :
-			text = font.render(v, False, RED if cursor == i else BLACK)
+			text = font.render(v, False, "RED" if cursor == i else "BLACK")
 			x, y = largeur_fenetre//2, (hauteur_fenetre//3) * (i+1)
 			fenetre.blit(text, (x - text.get_width() // 2, y - text.get_height() // 2))
 		actualiserAffichage(fenetre)
