@@ -1,4 +1,5 @@
-difficulty = "Lunatic" # Set as none by default ?
+import menu
+difficulty = menu.difficulty # Set as none by default ?
 lives = 3 # Normal settings by default
 speed = 60 # ""      ""     ""    ""
 match difficulty:

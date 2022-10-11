@@ -1,6 +1,8 @@
 from gestion_fenetre import *
 from time import sleep
 
+difficulty = "Lunatic"
+
 def pause(fenetre) :
     options = ["resume","quit"]
     cursor = 0

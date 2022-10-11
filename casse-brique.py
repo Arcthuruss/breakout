@@ -6,7 +6,6 @@ from random import choice, randint
 from time import sleep
 import menu
 
-
 pygame.mixer.init()
 pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
         
