@@ -1,5 +1,6 @@
 from random import randint
 import pygame
+import difficulty
 from pygame.locals import *
 from gestion_fenetre import *
 
@@ -31,8 +32,7 @@ class Balle:
             self.y-=self.dy
             self.dy*=-1
         if self.y > dimensions_fenetre[1]-self.taille :
-            global lives
-            lives -= 1
+            difficulty.lives -= 1
             self.y-=self.dy
             self.dy*=-1
         if self.y+self.taille >= raquette.y and self.y <= raquette.y+raquette.hauteur and self.x >= raquette.x and self.x <= raquette.x+raquette.largeur :

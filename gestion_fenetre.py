@@ -1,4 +1,5 @@
 import pygame
+import difficulty
 from random import choice
 
 BLACK = (0, 0, 0)
@@ -10,7 +11,6 @@ GREEN=(0,255,0)
 largeur_fenetre = 960
 hauteur_fenetre = 540
 
-lives = 3
 clock = pygame.time.Clock()
 
 pygame.font.init()
