@@ -12,7 +12,7 @@ pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".
 
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
 balle=Balle()
-raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-20)
+raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 #shut the fuck up 
 pygame.mixer.music.play()
 while difficulty.lives :
