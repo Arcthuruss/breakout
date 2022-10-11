@@ -1,5 +1,4 @@
 import pygame
-import difficulty
 from random import choice
 
 BLACK = (0, 0, 0)
@@ -18,10 +17,9 @@ font = pygame.font.Font("Monocraft.otf", 100)
 
 with open("splash_texts.txt",'r',encoding='utf-8') as f:
 	splash_texts=f.read().split('\n')
-caption = "Casse-Brique : " + choice(splash_texts) + " | " + difficulty.difficulty
 icon = pygame.image.load("textures/vergil_face.jpg")
 
-def ouvrir_fenetre(largeur, hauteur):
+def ouvrir_fenetre(largeur, hauteur, caption):
 	"""
 	créé un objet fenetre de taille donnée en paramètre
 	Parametre:

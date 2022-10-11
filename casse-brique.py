@@ -6,11 +6,13 @@ from random import choice, randint
 from time import sleep
 import menu
 
+caption = "Casse-Brique : " + choice(splash_texts) + " | " + difficulty.difficulty
+
 pygame.mixer.init()
 pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
 		
 
-fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
+fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre, caption)
 balle=Balle()
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 #shut the fuck up 
