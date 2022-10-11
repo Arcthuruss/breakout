@@ -6,10 +6,15 @@ from time import sleep
 import menu
 
 pygame.mixer.init()
-pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
-        
+if splash_text == "Ambasing" :
+    pygame.mixer.music.load("sounds/musics/Ambatukam.ogg")
+else :
+    pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
 
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
+
+menu.start(fenetre)
+
 balle=Balle()
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-20)
 #shut the fuck up 
