@@ -1,4 +1,4 @@
-difficulty = "Normal" # Set as none by default ?
+difficulty = "Lunatic" # Set as none by default ?
 lives = 3 # Normal settings by default
 speed = 60 # ""      ""     ""    ""
 match difficulty:

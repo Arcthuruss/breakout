@@ -25,7 +25,7 @@ while difficulty.lives :
     actualiserAffichage(fenetre)
     print(f"{difficulty.lives=}")
     #sleep(vitesse)
-    clock.tick(60)
+    clock.tick(difficulty.speed)
     pygame.event.get()
     #for event in pygame.event.get(): #détection evenement
     #    if event.type==MOUSEMOTION: #evenement sur la souris
