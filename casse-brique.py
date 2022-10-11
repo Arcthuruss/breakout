@@ -1,7 +1,7 @@
 from gestion_fenetre import *
 from pygame.locals import *
 from classes import *
-from difficulty import *
+import difficulty
 from random import choice, randint
 from time import sleep
 import menu
@@ -16,14 +16,14 @@ balle=Balle()
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-20)
 #shut the fuck up 
 pygame.mixer.music.play()
-while lives :
+while difficulty.lives :
     effacer(fenetre)
     balle.avancer()
     balle.collisions(raquette,(largeur_fenetre, hauteur_fenetre))
     balle.tracer(fenetre)
     raquette.tracer(fenetre)
     actualiserAffichage(fenetre)
-    print(f"{lives=}")
+    print(f"{difficulty.lives=}")
     #sleep(vitesse)
     clock.tick(60)
     pygame.event.get()
