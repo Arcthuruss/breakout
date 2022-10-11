@@ -14,7 +14,7 @@ fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
 balle=Balle()
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 #shut the fuck up 
-pygame.mixer.music.play()
+pygame.mixer.music.play(difficulty.music_timer)
 while difficulty.lives :
 	effacer(fenetre)
 	balle.avancer()

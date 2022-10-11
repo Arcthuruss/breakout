@@ -2,6 +2,7 @@ import menu
 difficulty = menu.difficulty # Set as none by default ?
 lives = 3 # Normal settings by default
 speed = 60 # ""      ""     ""    ""
+music_timer = 0
 match difficulty:
 	case "Easy":
 		lives = 5
@@ -16,6 +17,7 @@ match difficulty:
 		speed = 120
 		print("🗿")
 	case "Lunatic":
+		music_timer = 117
 		lives = 1
 		speed = 240
 		print("Foolishness")
