@@ -18,7 +18,7 @@ font = pygame.font.Font("Monocraft.otf", 100)
 
 with open("splash_texts.txt",'r',encoding='utf-8') as f:
     splash_texts=f.read().split('\n')
-caption = "Casse-Brique : " + choice(splash_texts)
+caption = "Casse-Brique : " + choice(splash_texts) + " | " + difficulty.difficulty
 icon = pygame.image.load("textures/vergil_face.jpg")
 
 def ouvrir_fenetre(largeur, hauteur):
