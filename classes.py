@@ -59,7 +59,7 @@ class Raquette:
 
 class InputBox :
 
-    def __init__(self, x, y, size, base_color=BLACK, selected_color=RED, text_color=BLACK, font_path="Monocraft.otf") :
+    def __init__(self, x, y, size, base_color="BLACK", selected_color="RED", text_color="BLACK", font_path="Monocraft.otf") :
         self.text = " "
         self.font = pygame.font.Font(font_path, size)
         self.box = pygame.Rect(x, y, *self.font.size(self.text))

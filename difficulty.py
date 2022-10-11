@@ -1,5 +1,3 @@
-import classes
-
 difficulty = "Normal" # Set as none by default ?
 lives = 3 # Set as ? By default ?
 
