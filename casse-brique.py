@@ -12,7 +12,8 @@ pygame.mixer.init()
 if splash_text == "Ambasing" :
     pygame.mixer.music.load("sounds/musics/Ambatukam.ogg")
 else :
-    pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
+    music=choice(["pvz_sam","Bury_the_light"])
+    pygame.mixer.music.load("sounds/musics/"+music+".ogg")
 
 fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre, caption)
 
@@ -21,10 +22,13 @@ menu.start(fenetre)
 balle=Balle()
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 
-briques = [Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
+briques = []#Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
 
 #shut the fuck up 
-pygame.mixer.music.play(start=difficulty.music_timer)
+if music=="Bury_the_light":
+	pygame.mixer.music.play(loops=1,start=difficulty.music_timer,fade_ms=0)
+else:
+    pygame.mixer.music.play()
 while difficulty.lives :
 	effacer(fenetre)
 	balle.avancer()
