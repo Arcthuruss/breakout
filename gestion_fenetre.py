@@ -7,6 +7,9 @@ BLUE=(0,0,255)
 RED=(255,0,0)
 GREEN=(0,255,0)
 
+BRICK_THEME = [BLACK, RED, GREEN, BLUE]
+
+
 largeur_fenetre = 960
 hauteur_fenetre = 540
 
@@ -17,7 +20,6 @@ font = pygame.font.Font("Monocraft.otf", 100)
 
 with open("splash_texts.txt",'r',encoding='utf-8') as f:
     splash_text=choice(f.read().split('\n'))
-caption = "Casse-Brique : " + splash_text
 icon = pygame.image.load("textures/vergil_face.jpg")
 
 def ouvrir_fenetre(largeur, hauteur, caption):
@@ -56,7 +58,7 @@ def tracerBrique(fenetre, brique):
 	Sortie:
 		rien
 	"""
-	pygame.draw.rect(fenetre, BLACK, (brique.x, brique.y, brique.taille, brique.taille))
+	pygame.draw.rect(fenetre, BRICK_THEME[brique.lives-1], (brique.x, brique.y, brique.largeur, brique.hauteur))
 
 def tracerBalle(fenetre, balle):
 	"""
@@ -99,3 +101,6 @@ def fermer_fenetre():
 		rien
 	"""
 	pygame.quit()
+
+def tracerTouteBrique(fenetre, briques) :
+	[tracerBrique(fenetre,brick) for brick in briques]

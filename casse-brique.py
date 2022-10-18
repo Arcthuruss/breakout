@@ -6,7 +6,7 @@ from random import choice, randint
 from time import sleep
 import menu
 
-caption = "Casse-Brique : " + choice(splash_texts) + " | " + difficulty.difficulty
+caption = "Casse-Brique : " + splash_text + " | " + difficulty.difficulty
 
 pygame.mixer.init()
 if splash_text == "Ambasing" :
@@ -14,37 +14,31 @@ if splash_text == "Ambasing" :
 else :
     pygame.mixer.music.load("sounds/musics/"+choice(["pvz_sam","Bury_the_light"])+".ogg")
 
-fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre)
+fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre, caption)
 
 menu.start(fenetre)
 
 balle=Balle()
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
+
+briques = [Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
+
 #shut the fuck up 
 pygame.mixer.music.play(difficulty.music_timer)
 while difficulty.lives :
 	effacer(fenetre)
 	balle.avancer()
-	balle.collisions(raquette,(largeur_fenetre, hauteur_fenetre))
+	balle.collisions(raquette,briques,(largeur_fenetre, hauteur_fenetre))
 	balle.tracer(fenetre)
 	raquette.tracer(fenetre)
+	tracerTouteBrique(fenetre,briques)
 	actualiserAffichage(fenetre)
-	print(f"{difficulty.lives=}")
-	#sleep(vitesse)
 	clock.tick(difficulty.speed)
 	pygame.event.get()
-	#for event in pygame.event.get(): #détection evenement
-	#    if event.type==MOUSEMOTION: #evenement sur la souris
-	#        balle.x=event.pos[0] #balle placée sur le X de la souris
-	#        balle.y=event.pos[1] #balle placée sur le Y de la souris
 	if pygame.key.get_pressed()[pygame.K_RIGHT]:
 		raquette.move_horizontal(5)
 	if pygame.key.get_pressed()[pygame.K_LEFT]:
 		raquette.move_horizontal(-5)
-	if pygame.key.get_pressed()[pygame.K_UP]:
-		raquette.move_vertical(-5)
-	if pygame.key.get_pressed()[pygame.K_DOWN]:
-		raquette.move_vertical(5)
 	if pygame.key.get_pressed()[pygame.K_ESCAPE]:
 		menu.pause(fenetre)
 
