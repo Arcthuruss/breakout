@@ -24,7 +24,7 @@ raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 briques = [Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
 
 #shut the fuck up 
-pygame.mixer.music.play(difficulty.music_timer)
+pygame.mixer.music.play(start=difficulty.music_timer)
 while difficulty.lives :
 	effacer(fenetre)
 	balle.avancer()

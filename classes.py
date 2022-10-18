@@ -45,9 +45,6 @@ class Balle:
 			dhx = (brick.x+brick.largeur) - self.x 
 			self.y-=self.dy
 			self.dy*=-1
-		if any([ for brick in briques]) :
-			self.x-=self.dx
-			self.dx*=-1
 
 class Raquette:
 
