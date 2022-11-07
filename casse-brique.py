@@ -31,6 +31,7 @@ else:
     pygame.mixer.music.play()
 while difficulty.lives :
 	effacer(fenetre)
+	lives_counter = font.render('Monke !', True, WHITE, RED)
 	balle.avancer()
 	balle.collisions(raquette,briques,(largeur_fenetre, hauteur_fenetre))
 	balle.tracer(fenetre)
