@@ -1,7 +1,7 @@
 from gestion_fenetre import *
 from time import sleep
 
-difficulty = "Normal"
+difficulty = "Lunatic"
 
 def start(fenetre) :
     options = ["Play","Highscores","quit"]

@@ -17,7 +17,7 @@ match difficulty:
 		speed = 120
 		print("🗿")
 	case "Lunatic":
-		music_timer = 117
+		music_timer = 100
 		lives = 1
 		speed = 240
 		print("Foolishness")
