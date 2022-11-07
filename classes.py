@@ -60,7 +60,7 @@ class Balle:
 						else :
 							self.bonk_x()
 
-					brick.disabled=True
+					brick.hit()
 				
 				
 class Raquette:
@@ -133,3 +133,10 @@ class Brique :
 		self.hauteur = hauteur
 		self.lives = lives
 		self.disabled = False
+		if lives == 0 :
+			self.disabled = True
+	
+	def hit(self) :
+			self.lives -= 1
+			if self.lives == 0 :
+				self.disabled = True

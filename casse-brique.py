@@ -4,6 +4,7 @@ from classes import *
 import difficulty
 from random import choice, randint
 from time import sleep
+from pattern_handler import *
 import menu
 
 caption = "Casse-Brique : " + splash_text + " | " + difficulty.difficulty
@@ -22,7 +23,7 @@ menu.start(fenetre)
 balle=Balle(200,100)
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 
-briques = []#Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
+briques = read_pattern(2,'Hard')
 
 #shut the fuck up 
 if music=="Bury_the_light":
@@ -46,7 +47,7 @@ while difficulty.lives :
 	if pygame.key.get_pressed()[pygame.K_ESCAPE]:
 		menu.pause(fenetre)
 
-text = font.render('RIP BOZO', False, BLACK)
+text = font.render('RIP BOZO', False, BLACK, WHITE)
 fenetre.blit(text, (69, 69))
 asset = pygame.image.load("textures/chair.jpeg")
 fenetre.blit(asset, (100, 200))
