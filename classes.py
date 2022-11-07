@@ -23,32 +23,46 @@ class Balle:
 	
 	def tracer(self,fenetre):
 		tracerBalle(fenetre,self)
+	
+	def bonk_x(self) :
+		self.x-=self.dx
+		self.dx*=-1
+	
+	def bonk_y(self) :
+		self.y-=self.dy
+		self.dy*=-1
 		
 	def collisions(self,raquette,briques,dimensions_fenetre) :
 		if self.x < 0 or self.x > dimensions_fenetre[0]-self.taille :
-			self.x-=self.dx
-			self.dx*=-1
+			self.bonk_x()
 		if self.y < 0 :
-			self.y-=self.dy
-			self.dy*=-1
+			self.bonk_y()
 		if self.y > dimensions_fenetre[1]-self.taille :
 			difficulty.lives -= 1
-			self.y-=self.dy
-			self.dy*=-1
+			self.bonk_y()
 		if self.y+self.taille >= raquette.y and self.y <= raquette.y+raquette.hauteur and self.x >= raquette.x and self.x <= raquette.x+raquette.largeur :
-			self.y-=self.dy
-			self.dy*=-1
-		if any([self.y+self.taille >= brick.y and self.y <= brick.y+brick.hauteur and self.x >= brick.x and self.x <= brick.x+brick.largeur for brick in briques]) :
-			dly = brique.y - (self.y+self.taille)
-			dhy = (brick.y+brick.hauteur) - self.y
-			dlx = brick.x - self.x
-			dhx = (brick.x+brick.largeur) - self.x 
-			self.y-=self.dy
-			self.dy*=-1
-		if any([ for brick in briques]) :
-			self.x-=self.dx
-			self.dx*=-1
+			self.bonk_y()
+		for ligne in briques :
+			for brick in ligne :
+				if not brick.disabled and (self.y+self.taille >= brick.y and self.y <= brick.y+brick.hauteur and self.x >= brick.x and self.x <= brick.x+brick.largeur) :
+					
+					dy = self.y - brick.y
+					dx = self.x - brick.x
 
+					if abs(dy) > abs(dx) :
+						if dx < 0 :
+							self.bonk_y()
+						else :
+							self.bonk_x()
+					else :
+						if dy < 0 :
+							self.bonk_y()
+						else :
+							self.bonk_x()
+
+					brick.disabled=True
+				
+				
 class Raquette:
 
 	def __init__(self,x,y,largeur=50,hauteur=5):
@@ -118,3 +132,4 @@ class Brique :
 		self.largeur = largeur
 		self.hauteur = hauteur
 		self.lives = lives
+		self.disabled = False

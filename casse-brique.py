@@ -18,13 +18,12 @@ fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre, caption)
 
 menu.start(fenetre)
 
-balle=Balle()
+balle=Balle(200,100)
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 
-briques = [Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
-
-#shut the fuck up 
-pygame.mixer.music.play(difficulty.music_timer)
+#briques = [Brique(150,50,10,5,1),Brique(110,10,5,10,2),Brique(170,10,10,10,3),Brique(125,25,30,5,4)]
+briques = [[Brique(i*50,50,50,50,1) for i in range(10)]]
+#shut the fuck up pygame.mixer.music.play(difficulty.music_timer)
 while difficulty.lives :
 	effacer(fenetre)
 	balle.avancer()

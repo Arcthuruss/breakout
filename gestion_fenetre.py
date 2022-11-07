@@ -102,5 +102,5 @@ def fermer_fenetre():
 	"""
 	pygame.quit()
 
-def tracerTouteBrique(fenetre, briques) :
-	[tracerBrique(fenetre,brick) for brick in briques]
+def tracerTouteBrique(fenetre, liste_briques) :
+	[[tracerBrique(fenetre,brick) for brick in ligne if not brick.disabled] for ligne in liste_briques]
