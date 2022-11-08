@@ -17,6 +17,7 @@ clock = pygame.time.Clock()
 
 pygame.font.init()
 font = pygame.font.Font("Monocraft.otf", 100)
+font_vies = pygame.font.Font("Monocraft.otf", 20)
 
 with open("splash_texts.txt",'r',encoding='utf-8') as f:
     splash_text=choice(f.read().split('\n'))
