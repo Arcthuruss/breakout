@@ -1,7 +1,7 @@
 from gestion_fenetre import *
 from time import sleep
 
-difficulty = "Lunatic"
+difficulty = "Normal"
 
 def start(fenetre) :
     options = ["Play","Highscores","quit"]
@@ -34,7 +34,7 @@ def start(fenetre) :
                     exit()
 
 
- #  TODO access xored highscores and show them
+ #  TODO access xorred highscores and show them
 def show_highscores() :
     pass
 
