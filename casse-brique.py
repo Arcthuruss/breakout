@@ -6,8 +6,22 @@ from random import choice, randint
 from time import sleep
 from pattern_handler import *
 import menu
-
+import tkinter as tk
+from PIL import ImageTk, Image
 caption = "Casse-Brique : " + splash_text + " | " + difficulty.difficulty
+
+def watiPopup(icon,title,path):
+    popup = tk.Tk()
+    popup.wm_title(title)
+    popup.geometry("250x150")
+    label = tk.Label(popup)
+    label.pack(side="top", fill="x", pady=10)
+    img = ImageTk.PhotoImage(Image.open(path))
+    label = tk.Label(popup, image = img)
+    label.pack(fill = "both", expand = "yes")
+    B1 = tk.Button(popup, text="OK", command = popup.destroy)
+    B1.pack()
+    popup.mainloop()
 
 pygame.mixer.init()
 if splash_text == "Ambasing" :
@@ -48,7 +62,9 @@ while difficulty.lives :
 		raquette.move_horizontal(-5)
 	if pygame.key.get_pressed()[pygame.K_ESCAPE]:
 		menu.pause(fenetre)
-
+# THE PETER ALERT IS REAL !!!!!!!!!!!!!
+if menu.difficulty == "Easy":
+    watiPopup("","Peter Alert","./textures/petah.jpeg", )
 text = font.render('RIP BOZO', False, BLACK, WHITE)
 fenetre.blit(text, (69, 69))
 asset = pygame.image.load("textures/chair.jpeg")
