@@ -46,14 +46,14 @@ class Balle:
 			for brick in ligne :
 				if not brick.disabled and (self.y+self.taille >= brick.y and self.y <= brick.y+brick.hauteur and self.x >= brick.x and self.x <= brick.x+brick.largeur) :
 					
-					dy = self.y - brick.y
-					dx = self.x - brick.x
+					dy = (self.y - brick.y) / brick.hauteur
+					dx = (self.x - brick.x) / brick.largeur
 
 					if abs(dy) > abs(dx) :
 						if dx < 0 :
-							self.bonk_y()
-						else :
 							self.bonk_x()
+						else :
+							self.bonk_y()
 					else :
 						if dy < 0 :
 							self.bonk_y()

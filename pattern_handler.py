@@ -2,7 +2,7 @@ from classes import Brique
 
  #  THE read_pattern, THE read_pattern IS REAL
 def read_pattern(number,difficulty) :
-    with open(f"patterns/{difficulty}/pattern_{number}.txt",'r') as f :
+    with open(f"patterns/{difficulty}/pattern_{number}.txt",'r', encoding='utf-8') as f :
         data = f.read()
     data = data.split('\n')[1:]
     delimiter = data.index('')

@@ -20,10 +20,10 @@ fenetre = ouvrir_fenetre(largeur_fenetre, hauteur_fenetre, caption)
 
 menu.start(fenetre)
 
-balle=Balle(200,100)
+balle=Balle(400,400)
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 
-briques = read_pattern(2,'Hard')
+briques = read_pattern(2,'Lunatic')
 
 #shut the fuck up 
 if music=="Bury_the_light":
