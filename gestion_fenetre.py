@@ -7,7 +7,19 @@ BLUE=(0,0,255)
 RED=(255,0,0)
 GREEN=(0,255,0)
 
-BRICK_THEME = [BLACK, RED, GREEN, BLUE]
+#Cool color collection !!
+HP1=(250, 77, 65)
+HP2=(250, 111, 65)
+HP3=(250, 142, 65)
+HP4=(250, 210, 65)
+HP5=(182, 250, 65)
+HP6=(96, 250, 65)
+HP7=(65, 250, 133)
+HP8=(65, 250, 198)
+HP9=(65, 182, 250)
+JinxIsBlack=(0,0,0)
+
+BRICK_THEME = [HP1,HP2,HP3,HP4,HP5,HP6,HP7,HP8,HP9,JinxIsBlack]
 
 
 largeur_fenetre = 960
