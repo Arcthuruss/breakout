@@ -13,15 +13,19 @@ caption = "Casse-Brique : " + splash_text + " | " + difficulty.difficulty
 def watiPopup(icon,title,path):
     popup = tk.Tk()
     popup.wm_title(title)
-    popup.geometry("250x150")
+    popup.geometry("230x120")
     label = tk.Label(popup)
+    ico = Image.open('./textures/petah.jpeg')
+    photo = ImageTk.PhotoImage(ico)
+    popup.wm_iconphoto(False, photo)
     label.pack(side="top", fill="x", pady=10)
     img = ImageTk.PhotoImage(Image.open(path))
     label = tk.Label(popup, image = img)
-    label.pack(fill = "both", expand = "yes")
+    label.pack(expand = "yes")
     B1 = tk.Button(popup, text="OK", command = popup.destroy)
     B1.pack()
     popup.mainloop()
+
 
 pygame.mixer.init()
 if splash_text == "Ambasing" :
@@ -37,7 +41,7 @@ menu.start(fenetre)
 balle=Balle(400,400)
 raquette=Raquette(largeur_fenetre//2,hauteur_fenetre-40)
 
-briques = read_pattern(2,'Lunatic')
+briques = read_pattern(3,'Lunatic')
 
 #shut the fuck up 
 if music=="Bury_the_light":

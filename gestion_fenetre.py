@@ -6,6 +6,7 @@ WHITE = (255, 255, 255)
 BLUE=(0,0,255)
 RED=(255,0,0)
 GREEN=(0,255,0)
+PUPEL=(204, 0, 204)
 
 #Cool color collection !!
 HP1=(250, 77, 65)
@@ -60,7 +61,7 @@ def tracerRaquette(fenetre, raquette):
 	Sortie:
 		rien
 	"""
-	pygame.draw.rect(fenetre, BLUE, (raquette.x, raquette.y, raquette.largeur, raquette.hauteur))
+	pygame.draw.rect(fenetre, PUPEL, (raquette.x, raquette.y, raquette.largeur, raquette.hauteur))
 	
 def tracerBrique(fenetre, brique):
 	"""
@@ -82,7 +83,7 @@ def tracerBalle(fenetre, balle):
 	Sortie:
 		rien
 	"""
-	pygame.draw.circle(fenetre, GREEN, (balle.x+balle.taille//2, balle.y+balle.taille//2), balle.taille//2)
+	pygame.draw.circle(fenetre, RED, (balle.x+balle.taille//2, balle.y+balle.taille//2), balle.taille//2)
 	
 def actualiserAffichage(fenetre,rectangle=None):
 	"""
